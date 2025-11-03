@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="icon" type="image/png" href="favicon.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento e Orçamento Rápido | Chaveiro Lages]</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <div class="logo-container">
+                <img src="logo.jpeg" alt="Logo Chaveiro [Seu Nome]" class="chaveiro-logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Início</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="#formAgendamento" class="btn-nav-cta">Agendar Agora</a></li> 
+            </ul>
+        </div>
+    </nav>
+    <header class="header">
+        <h1>Agendamento & Orçamento</h1>
+        <p>Serviços de confiança em Lages e região. Atendimento 24h para emergências.</p>
+        
+        <div class="emergency-box">
+            <p><i class="fa-solid fa-triangle-exclamation"></i> É UMA EMERGÊNCIA? Ligue ou chame no WhatsApp:</p>
+            
+            <a href="tel:+5549988598931" class="btn-emergency"><i class="fa-solid fa-phone-alt"></i> LIGAR AGORA: (49) 98859-8931</a>
+            
+            <a href="https://wa.me/5549988598931" target="_blank" class="btn-emergency btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WHATSAPP 24H</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="form-section">
+            <h2 id="formAgendamento"><i class="fa-solid fa-calendar-days"></i> Solicite seu Serviço</h2>
+            <p class="subtitle">Selecione o serviço e preencha os detalhes. Nosso time enviará a confirmação do orçamento pelo WhatsApp.</p>
+
+            <form id="formAgendamento" onsubmit="return submitToWhatsapp(event)">
+                <label for="servico_id">O que você precisa?*</label>
+                <select id="servico_id" name="id_servico" required>
+                    <option value="">-- Selecione o Serviço --</option>
+                    <option value="emergencia">Emergência 24h (Chave Trancada/Perdida)</option>
+                    <option value="copia">Cópia/Confecção de Chaves</option>
+                    <option value="codificada">Chave Codificada para Carros</option>
+                    <option value="fechadura">Instalação/Troca de Fechaduras</option>
+                    <option value="outros">Outro Serviço / Orçamento</option>
+                </select>
+                
+                <div id="orcamento-display" class="alert"></div>
+
+                <label for="descricao">Detalhes do Serviço (Obrigatório para Orçamento):</label>
+                <textarea id="descricao" name="descricao" rows="3" placeholder="Ex: A chave quebrou no miolo da porta da sala..."></textarea>
+
+                <hr>
+
+                <h3>Informações de Contato e Local</h3>
+                
+                <label for="nome_cliente">Seu Nome Completo*</label>
+                <input type="text" id="nome_cliente" name="nome_cliente" required>
+                
+                <label for="whatsapp">Telefone / WhatsApp*</label>
+                <input type="tel" id="whatsapp" name="whatsapp" required placeholder="(XX) XXXXX-XXXX">
+                
+                <label for="endereco">Endereço do Serviço*</label>
+                <input type="text" id="endereco" name="endereco" required placeholder="Rua, Número, Bairro">
+                
+                <div class="input-group">
+                    <div>
+                        <label for="data_agendada">Data Preferencial*</label>
+                        <input type="date" id="data_agendada" name="data_agendada" required>
+                    </div>
+                    <div>
+                        <label for="horario_agendado">Horário Preferencial*</label>
+                        <input type="time" id="horario_agendado" name="horario_agendado" required>
+                    </div>
+                </div>
+
+                <p class="small-info">*Ao solicitar, você receberá o orçamento final via WhatsApp.</p>
+
+                <button type="submit" class="btn-submit"><i class="fa-solid fa-lock"></i> SOLICITAR ORÇAMENTO E AGENDAMENTO</button>
+
+                <div id="mensagem-retorno" class="alert-success" style="display: none;"></div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Chaveiro Lages. Todos os direitos reservados.</p>
+    </footer>
+
+     <a href="index.html#formAgendamento" class="mascote-flutuante">
+    <img src="mascote.png" alt="Mascote Chaveiro - Agende Agora" title="Agende seu serviço rapidamente!">
+    </a>
+
+    <script>
+        // O código de manipulação de arquivo foi removido, pois o campo 'foto' foi excluído do HTML.
+        
+        // NOVA FUNÇÃO PARA ENVIAR VIA WHATSAPP (Ajustada)
+        function submitToWhatsapp(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            // O número de telefone de destino (substitua pelo seu número, no formato DDI DDD XXXXXYYYY)
+            // Exemplo para o número na logo (49)988598931: 5549988598931
+            const phoneNumber = '554999400235'; 
+            
+            // Coleta os valores do formulário
+            const servico = document.getElementById('servico_id').options[document.getElementById('servico_id').selectedIndex].text;
+            const descricao = document.getElementById('descricao').value || 'Não informado';
+            const nomeCliente = document.getElementById('nome_cliente').value;
+            const whatsapp = document.getElementById('whatsapp').value;
+            const endereco = document.getElementById('endereco').value;
+            const dataAgendada = document.getElementById('data_agendada').value;
+            const horarioAgendado = document.getElementById('horario_agendado').value;
+            
+            // Cria a mensagem estruturada para o WhatsApp
+            const message = `*SOLICITAÇÃO DE ORÇAMENTO/AGENDAMENTO*
+            
+*Serviço:* ${servico}
+*Descrição Detalhada:* ${descricao}
+
+*--- DADOS DO CLIENTE ---*
+*Nome:* ${nomeCliente}
+*Telefone/WhatsApp:* ${whatsapp}
+*Endereço:* ${endereco}
+*Data Preferencial:* ${dataAgendada || 'Não informada'}
+*Horário Preferencial:* ${horarioAgendado || 'Não informado'}
+
+Por favor, confirme a disponibilidade e o orçamento.
+`;
+
+            // Codifica a mensagem para uso na URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Constrói o link do WhatsApp
+            const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+            
+            // Abre o link do WhatsApp (isso redireciona o usuário para o chat)
+            window.open(whatsappURL, '_blank');
+            
+            // Mensagem de sucesso simulada (já que não há um backend real)
+            document.getElementById('mensagem-retorno').style.display = 'block';
+            document.getElementById('mensagem-retorno').innerHTML = '✅ **Sucesso!** Seus dados foram enviados. Você será redirecionado(a) para o WhatsApp para enviar a mensagem.';
+            
+            return false; // Evita qualquer outro processamento
+        }
+    </script>
+    </body>
+</html>

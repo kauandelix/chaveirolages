@@ -1,0 +1,677 @@
+/* =======================================
+    1. ESTILOS GERAIS E VARIÁVEIS
+    ======================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Roboto', sans-serif;
+}
+
+:root {
+    /* Paleta de Landing Page (Foco e Contraste) */
+    --primary-color: #0056B3; /* Azul Profundo (Institucional/Confiança) */
+    --accent-color: #cc0000;  /* Laranja/Vermelho (Destaque para CTAs) */
+    --secondary-color: #2ECC71; /* Verde Ação (WhatsApp/Sucesso) */
+    --danger-color: #cc0000; /* Vermelho Emergência */
+    --text-dark: #212529;
+    --text-light: #6C757D;
+    --background-light: #FFFFFF; /* Branco Puro para Landing Page */
+    --card-background: #F8F9FA; /* Fundo do formulário levemente cinza */
+    --border-color: #DEE2E6;
+}
+
+body {
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    padding-bottom: 50px;
+}
+
+.container {
+    max-width: 850px;
+    margin: 50px auto 30px; 
+    padding: 0 20px;
+}
+
+/* Títulos e Subtítulos Comuns */
+.subtitle {
+    color: var(--text-light);
+    margin-bottom: 40px;
+    font-size: 1.1em;
+}
+
+
+/* =======================================
+    2. BARRA DE NAVEGAÇÃO (NAVBAR)
+    ======================================= */
+.navbar {
+    background-color: var(--card-background);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    position: sticky; /* Mantém a barra visível ao rolar */
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navbar .logo-container {
+    margin-bottom: 0; 
+}
+
+.navbar .chaveiro-logo {
+    max-width: 200px; 
+    height: auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 1em;
+    padding: 5px 0;
+    transition: color 0.2s;
+    position: relative;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+    color: var(--primary-color);
+}
+
+.nav-links li a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* Botão CTA dentro do menu */
+.btn-nav-cta {
+    background-color: var(--accent-color) !important;
+    color: white !important;
+    padding: 8px 15px !important;
+    border-radius: 5px;
+    font-weight: 700 !important;
+    transition: background-color 0.2s;
+}
+.btn-nav-cta:hover {
+    background-color: #CC462A !important;
+}
+.btn-nav-cta::after {
+    content: none !important; 
+}
+
+
+/* =======================================
+    3. HEADER E FAIXA PRINCIPAL (Hero Section)
+    ======================================= */
+.header {
+    background-color: var(--card-background);
+    padding: 40px 20px 40px; 
+    text-align: center;
+    border-bottom: 1px solid var(--border-color); 
+}
+
+/* Títulos Fortes */
+.header h1 {
+    font-size: 2.8em; 
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.header p {
+    color: var(--text-light);
+    margin-bottom: 30px;
+    font-size: 1.2em; 
+}
+
+/* BOX de Emergência (Alto Contraste) */
+.emergency-box {
+    background-color: var(--danger-color); 
+    color: white;
+    padding: 25px;
+    border-radius: 10px;
+    margin: 30px auto 0;
+    max-width: 500px; 
+    box-shadow: 0 8px 15px rgba(220, 53, 69, 0.3);
+}
+
+.emergency-box p {
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: white;
+    font-size: 1.1em;
+}
+
+/* Botões de Emergência (Reagrupados na Seção de Componentes) */
+
+
+/* =======================================
+    4. ESTILOS DE COMPONENTES BASE (Inputs, Botões, Alertas)
+    ======================================= */
+
+/* BOTÕES GERAIS E CTA's */
+.btn-emergency {
+    display: block;
+    padding: 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1em;
+    text-align: center;
+    margin-top: 15px;
+    transition: background-color 0.2s, transform 0.2s;
+}
+.btn-emergency:active {
+    transform: scale(0.98);
+}
+
+/* Botão LIGAR (Atenção com fundo claro) */
+.btn-emergency:first-of-type {
+    background-color: white;
+    color: var(--danger-color);
+}
+.btn-emergency:first-of-type:hover {
+    background-color: #f0f0f0;
+}
+
+/* Botão WHATSAPP (Prioridade de contato) */
+.btn-whatsapp {
+    background-color: var(--secondary-color);
+    color: white;
+    box-shadow: 0 4px 8px rgba(46, 204, 113, 0.4);
+}
+.btn-whatsapp:hover {
+    background-color: #27ae60;
+}
+
+/* Botão de Envio (CTA Principal de Agendamento) */
+.btn-submit {
+    background-color: var(--accent-color); 
+    color: white;
+    border: none;
+    padding: 18px 25px; 
+    margin-top: 35px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: 700;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 6px 15px rgba(255, 87, 51, 0.4);
+}
+.btn-submit:hover {
+    background-color: #CC462A;
+}
+
+
+/* INPUTS E FORMULÁRIOS */
+label {
+    display: block;
+    margin-top: 25px; 
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 1em;
+    color: var(--text-dark);
+}
+input[type="text"],
+input[type="tel"],
+input[type="date"],
+input[type="time"],
+select,
+textarea {
+    width: 100%;
+    padding: 14px; 
+    border: 1px solid var(--border-color);
+    border-radius: 8px; 
+    font-size: 1em;
+    background-color: #FFFFFF;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--accent-color); 
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(255, 87, 51, 0.2); 
+    background-color: white;
+}
+textarea {
+    resize: vertical;
+}
+
+/* Divisor */
+hr {
+    border: 0;
+    height: 1px;
+    background: var(--border-color);
+    margin: 40px 0;
+}
+
+/* ALERTAS E FEEDBACKS */
+.alert {
+    padding: 18px;
+    margin-top: 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    border: 1px solid transparent;
+}
+.alert-warning {
+    background-color: #FFF3CD; 
+    color: #856404; 
+    border-color: #FFEBAF;
+}
+.alert-success {
+    background-color: #D4EDDA;
+    color: #155724;
+    border-color: var(--secondary-color);
+}
+
+/* Informações pequenas */
+.small-info {
+    font-size: 0.95em;
+    color: var(--text-light);
+    margin-top: 15px;
+    text-align: center;
+}
+
+
+/* ESTILOS DE UPLOAD DE ARQUIVO */
+
+/* 1. Esconde o input de arquivo padrão (fundamental para sobrepor o nativo) */
+.file-input-hidden {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+/* 2. Estiliza o rótulo (label) para que funcione como um botão */
+.file-upload-label {
+    /* Uso flexbox para alinhar o ícone e o texto no centro */
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    
+    padding: 10px 15px;
+    background-color: var(--card-background);
+    color: var(--primary-color); 
+    border: 1px dashed var(--border-color); /* Borda tracejada */
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s, border-color 0.2s;
+    width: 100%;
+    margin-top: 5px; 
+}
+
+.file-upload-label:hover {
+    background-color: #e9ecef;
+    border-color: var(--primary-color);
+}
+
+.file-upload-label i {
+    margin-right: 8px;
+}
+
+/* Estilo para indicar que um arquivo foi selecionado */
+.file-upload-label.file-selected {
+    border-style: solid; /* Muda de tracejado para sólido */
+    border-color: var(--secondary-color);
+    background-color: #d4edda; /* Fundo verde claro */
+    color: var(--secondary-color);
+}
+
+.file-upload-container {
+    margin-bottom: 15px;
+}
+
+
+/* =======================================
+    5. FORMULÁRIO PRINCIPAL (BLOCO FOCADO)
+    ======================================= */
+.form-section {
+    background-color: var(--card-background);
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+}
+
+.form-section h2 {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* Agrupamento de Inputs para Layout em Colunas */
+.input-group {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+.input-group > div {
+    flex-grow: 1;
+}
+
+
+/* =======================================
+    6. ESTILOS DA PÁGINA DE SERVIÇOS
+    ======================================= */
+.services-list {
+    display: grid;
+    /* 3 colunas em telas grandes */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.service-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.service-card:hover {
+    transform: translateY(-5px); /* Efeito sutil ao passar o mouse */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.service-card h3 {
+    color: var(--primary-color);
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    color: var(--text-light);
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.service-cta {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.service-cta:hover {
+    background-color: #CC462A;
+}
+
+/* CTA Final na página de serviços */
+.cta-final-section {
+    text-align: center;
+    margin: 60px auto;
+    padding: 40px;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.cta-final-section .subtitle {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.emergency-call {
+    margin-top: 20px;
+    font-size: 1.1em;
+    color: var(--text-dark);
+}
+
+
+/* =======================================
+    7. ESTILOS DA PÁGINA DE CONTATO
+    ======================================= */
+
+.contact-grid {
+    display: grid;
+    /* 2 colunas para cards de contato */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.contact-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.contact-card i {
+    font-size: 3em;
+    margin-bottom: 15px;
+    color: var(--primary-color); /* Cor padrão dos ícones */
+    transition: color 0.3s;
+}
+
+.contact-card h3 {
+    font-size: 1.6em;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.contact-card p {
+    color: var(--text-light);
+    margin-bottom: 20px;
+    flex-grow: 1; /* Garante que todos os cards tenham altura similar */
+}
+
+.card-action {
+    font-weight: 700;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.95em;
+    /* Cor de fundo padrão da ação */
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+}
+
+/* Cores e Efeitos Específicos por Card */
+
+/* WhatsApp */
+.contact-card.whatsapp i {
+    color: var(--secondary-color); /* Verde */
+}
+.contact-card.whatsapp .card-action {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+/* Instagram */
+.contact-card.instagram i {
+    /* Gradiente para Instagram */
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+.contact-card.instagram:hover {
+    border: 1px solid #dc2743; /* Borda sutil no hover */
+}
+
+/* Telefone */
+.contact-card.phone i {
+    color: var(--danger-color); /* Vermelho Emergência */
+}
+.contact-card.phone .card-action {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* E-mail */
+.contact-card.email i {
+    color: var(--primary-color);
+}
+.contact-card.email:hover {
+    border: 1px solid var(--primary-color); 
+}
+
+/* Estilo do Formulário Simples na página de Contato */
+.contact-form-simple {
+    padding: 40px 50px; /* Um pouco menos de padding que o formulário principal */
+    margin-bottom: 40px;
+}
+
+
+/* =======================================
+    8. MASCOTE FLUTUANTE / FIXO
+    ======================================= */
+.mascote-flutuante {
+    /* Garante que o elemento fique fixo na tela mesmo com o scroll */
+    position: fixed; 
+    /* Posição no canto inferior direito */
+    bottom: 80px; 
+    right: 80px;
+    /* Garante que fique acima de outros elementos (como o navbar) */
+    z-index: 1000; 
+    /* Remove a decoração de link */
+    text-decoration: none; 
+    
+    /* Estilos para o círculo de fundo, se quiser que ele se pareça com um botão */
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.mascote-flutuante:hover {
+    /* Efeito sutil de levantar no mouse */
+    transform: translateY(-5px) scale(1.05); 
+}
+
+.mascote-flutuante img {
+    /* Tamanho da imagem do mascotinho */
+    width: 60px; /* Ajuste o tamanho conforme a sua imagem */
+    height: 60px;
+    display: block;
+    border-radius: 50%; /* Se a imagem já for redonda, pode ser 0. Caso contrário, deixa 50% para que ela caiba no círculo */
+}
+
+
+/* =======================================
+    9. RODAPÉ E RESPONSIVIDADE
+    ======================================= */
+footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-light);
+    font-size: 0.9em;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Media Query para Responsividade */
+@media (max-width: 900px) {
+    /* Ajuste para 2 colunas no grid de serviços */
+    .services-list {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2.2em;
+    }
+    .form-section {
+        padding: 30px;
+    }
+    .nav-links {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .navbar .chaveiro-logo {
+        max-width: 100px; 
+    }
+    .btn-nav-cta {
+        padding: 6px 12px !important;
+    }
+    /* Responsividade para Contato */
+    .contact-grid {
+        grid-template-columns: 1fr; /* 1 coluna em celular */
+    }
+    .contact-card {
+        padding: 30px;
+    }
+    .contact-form-simple {
+        padding: 30px 20px;
+    }
+    /* Opcional: Para evitar que o mascote sobreponha o footer (rodapé) em telas pequenas. */
+    .mascote-flutuante {
+        bottom: 20px; 
+        right: 20px;
+    }
+    .mascote-flutuante img {
+        width: 50px; 
+        height: 50px;
+    }
+}
+@media (max-width: 600px) {
+    .header h1 {
+        font-size: 1.6em;
+    }
+    .header p {
+        font-size: 1em;
+    }
+    .input-group {
+        flex-direction: column;
+        gap: 0;
+    }
+    .emergency-box {
+        border-radius: 0;
+        margin-top: 0;
+    }
+    .btn-emergency {
+        font-size: 1em;
+    }
+    /* Passa para 1 coluna no grid de serviços em celular */
+    .services-list {
+        grid-template-columns: 1fr;
+    }
+    .service-card {
+        padding: 25px;
+    }
+}
