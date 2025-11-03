@@ -604,74 +604,171 @@ footer {
     border-top: 1px solid var(--border-color);
 }
 
-/* Media Query para Responsividade */
+/* --- MEDIA QUERIES OTIMIZADAS PARA 100% RESPONSIVIDADE (NAVBAR VISÍVEL) --- */
+
+/* 1. Responsividade para Tablets (max-width: 900px) */
 @media (max-width: 900px) {
+    /* Container mais largo */
+    .container {
+        max-width: 720px; 
+    }
     /* Ajuste para 2 colunas no grid de serviços */
     .services-list {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
 }
+
+/* 2. Responsividade para Celulares e Tablets (max-width: 768px - Padrão Mobile) */
 @media (max-width: 768px) {
+    /* Container utiliza 100% da largura, com padding lateral */
+    .container {
+        margin: 30px auto; 
+        padding: 0 15px; 
+    }
+    
+    /* Navbar: Ajuste para quebra de linha se não houver espaço (mantendo tudo visível) */
+    .navbar-content {
+        flex-wrap: wrap; 
+        padding: 0 15px;
+        /* Alinha a primeira linha (logo + CTA) e a segunda (links) */
+        align-items: flex-start; 
+    }
+    
+    /* Encolhe o logo */
+    .navbar .chaveiro-logo {
+        max-width: 120px; 
+        order: 1; /* Garante que o logo fique no início */
+    }
+    
+    /* Reduz o botão CTA */
+    .btn-nav-cta {
+        padding: 6px 10px !important;
+        font-size: 0.85em !important;
+        order: 2; /* Fica no fim da primeira linha */
+    }
+    
+    /* Ajusta os links para a linha de baixo (se necessário) */
+    .nav-links {
+        width: 100%; /* Ocupa a largura total na linha de baixo */
+        margin-top: 10px; 
+        justify-content: space-around; /* Distribui os links uniformemente */
+        gap: 10px; /* Reduz o espaço entre os links */
+        order: 3; /* Vai para a terceira posição, forçando a quebra */
+    }
+    .nav-links li a {
+        font-size: 0.9em; /* Reduz o tamanho da fonte dos links */
+    }
+
+    
+    /* Header (Hero) */
+    .header {
+        padding: 30px 15px;
+    }
     .header h1 {
         font-size: 2.2em;
     }
+    
+    /* Formulário Principal */
     .form-section {
-        padding: 30px;
+        padding: 25px;
     }
-    .nav-links {
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
+    .form-section h2 {
+        font-size: 1.8em;
     }
-    .navbar .chaveiro-logo {
-        max-width: 100px; 
+    
+    /* Botões de Emergência */
+    .emergency-box {
+        max-width: 100%; 
+        padding: 20px;
     }
-    .btn-nav-cta {
-        padding: 6px 12px !important;
+    .btn-emergency {
+        font-size: 1em;
+        padding: 14px;
     }
+
     /* Responsividade para Contato */
     .contact-grid {
         grid-template-columns: 1fr; /* 1 coluna em celular */
-    }
-    .contact-card {
-        padding: 30px;
+        gap: 20px;
     }
     .contact-form-simple {
         padding: 30px 20px;
     }
-    /* Opcional: Para evitar que o mascote sobreponha o footer (rodapé) em telas pequenas. */
+    
+    /* Mascote flutuante menor e mais próximo da borda */
     .mascote-flutuante {
         bottom: 20px; 
         right: 20px;
+        padding: 5px;
     }
     .mascote-flutuante img {
         width: 50px; 
         height: 50px;
     }
 }
+
+/* 3. Responsividade para Celulares Pequenos (max-width: 600px - Reforço Mobile) */
 @media (max-width: 600px) {
+    
+    /* Header (Hero) */
     .header h1 {
-        font-size: 1.6em;
+        font-size: 1.8em; 
     }
     .header p {
         font-size: 1em;
+    }
+    .subtitle {
+        font-size: 1em;
+        margin-bottom: 25px;
+    }
+
+    /* Formulário */
+    .form-section {
+        padding: 20px 15px;
+        border-radius: 0; 
     }
     .input-group {
         flex-direction: column;
         gap: 0;
     }
+    label {
+        margin-top: 18px; 
+    }
+    input[type="text"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="time"],
+    select,
+    textarea {
+        padding: 12px;
+    }
+    .btn-submit {
+        font-size: 1.1em;
+        padding: 15px 20px;
+    }
+    
+    /* Passa para 1 coluna no grid de serviços em celular */
+    .services-list {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .service-card {
+        padding: 20px;
+    }
+    
+    /* Navbar: Distribui o espaço restante para os links */
+    .nav-links {
+        justify-content: space-between; 
+        gap: 5px;
+        padding: 0 5px; /* Adiciona um pequeno padding para não encostar nas bordas */
+    }
+    .nav-links li a {
+        font-size: 0.8em; /* Reduz ainda mais o tamanho da fonte */
+    }
+    
     .emergency-box {
         border-radius: 0;
         margin-top: 0;
     }
-    .btn-emergency {
-        font-size: 1em;
-    }
-    /* Passa para 1 coluna no grid de serviços em celular */
-    .services-list {
-        grid-template-columns: 1fr;
-    }
-    .service-card {
-        padding: 25px;
-    }
+
 }
