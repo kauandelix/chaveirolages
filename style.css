@@ -10,10 +10,10 @@
 
 :root {
     /* Paleta de Landing Page (Foco e Contraste) */
-    --primary-color: #0056B3; /* Azul Profundo (Institucional/Confiança) */
-    --accent-color: #cc0000;  /* Laranja/Vermelho (Destaque para CTAs) */
-    --secondary-color: #2ECC71; /* Verde Ação (WhatsApp/Sucesso) */
-    --danger-color: #cc0000; /* Vermelho Emergência */
+    --primary-color: #0056B3; 
+    --accent-color: #0056B3;  
+    --secondary-color: #2ECC71; 
+    --danger-color: #0056B3; 
     --text-dark: #212529;
     --text-light: #6C757D;
     --background-light: #FFFFFF; /* Branco Puro para Landing Page */
@@ -46,7 +46,8 @@ body {
     2. BARRA DE NAVEGAÇÃO (NAVBAR)
     ======================================= */
 .navbar {
-    background-color: var(--card-background);
+    /* Fundo do nav alterado para amarelo conforme solicitado */
+    background-color: #FFD700; /* amarelo-dourado */
     padding: 15px 0;
     border-bottom: 1px solid var(--border-color);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
@@ -69,7 +70,7 @@ body {
 }
 
 .navbar .chaveiro-logo {
-    max-width: 200px; 
+    max-width: 130px; 
     height: auto;
 }
 
@@ -115,7 +116,7 @@ body {
     transition: background-color 0.2s;
 }
 .btn-nav-cta:hover {
-    background-color: #CC462A !important;
+    background-color: #0056b3 !important;
 }
 .btn-nav-cta::after {
     content: none !important; 
@@ -222,7 +223,7 @@ body {
     box-shadow: 0 6px 15px rgba(255, 87, 51, 0.4);
 }
 .btn-submit:hover {
-    background-color: #CC462A;
+    background-color: #02376f;
 }
 
 
@@ -426,7 +427,7 @@ hr {
 }
 
 .service-cta:hover {
-    background-color: #CC462A;
+    background-color: #02376f;
 }
 
 /* CTA Final na página de serviços */
@@ -536,7 +537,7 @@ hr {
 
 /* Telefone */
 .contact-card.phone i {
-    color: var(--danger-color); /* Vermelho Emergência */
+    color: var(--danger-color); 
 }
 .contact-card.phone .card-action {
     background-color: var(--danger-color);
@@ -744,7 +745,7 @@ footer {
         padding: 12px;
     }
     .btn-submit {
-        font-size: 1.1em;
+        font-size: 0.8em;
         padding: 15px 20px;
     }
     
