@@ -10,10 +10,11 @@
 
 :root {
     /* Paleta de Landing Page (Foco e Contraste) */
-    --primary-color: #0056B3; 
-    --accent-color: #0056B3;  
+    /* AZUL original substituído por VERMELHO conforme solicitação */
+    --primary-color: #cf0000; 
+    --accent-color: #cf0000;  
     --secondary-color: #2ECC71; 
-    --danger-color: #0056B3; 
+    --danger-color: #cf0000; 
     --text-dark: #212529;
     --text-light: #6C757D;
     --background-light: #FFFFFF; /* Branco Puro para Landing Page */
@@ -46,8 +47,8 @@ body {
     2. BARRA DE NAVEGAÇÃO (NAVBAR)
     ======================================= */
 .navbar {
-    /* Fundo do nav alterado para amarelo conforme solicitado */
-    background-color: #FFD700; /* amarelo-dourado */
+    /* Fundo do nav: agora branco conforme solicitado */
+    background-color: var(--background-light); /* branco */
     padding: 15px 0;
     border-bottom: 1px solid var(--border-color);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
@@ -67,10 +68,15 @@ body {
 
 .navbar .logo-container {
     margin-bottom: 0; 
+    /* Fundo branco ao redor da logo para destacá-la */
+    background-color: var(--background-light);
+    padding: 6px 8px;
+    border-radius: 6px;
 }
 
 .navbar .chaveiro-logo {
-    max-width: 130px; 
+    /* Aumentado 10% para quem pediu novamente (143px -> 157px) */
+    max-width: 157px; 
     height: auto;
 }
 
@@ -116,7 +122,7 @@ body {
     transition: background-color 0.2s;
 }
 .btn-nav-cta:hover {
-    background-color: #0056b3 !important;
+    background-color: #990000 !important;
 }
 .btn-nav-cta::after {
     content: none !important; 
@@ -223,7 +229,7 @@ body {
     box-shadow: 0 6px 15px rgba(255, 87, 51, 0.4);
 }
 .btn-submit:hover {
-    background-color: #02376f;
+    background-color: #990000;
 }
 
 
@@ -279,9 +285,10 @@ hr {
     border: 1px solid transparent;
 }
 .alert-warning {
-    background-color: #FFF3CD; 
-    color: #856404; 
-    border-color: #FFEBAF;
+    /* Transformação: amarelo -> variante de vermelho (alerta de perigo visual) */
+    background-color: #F8D7DA; 
+    color: #721c24; 
+    border-color: #F5C6CB;
 }
 .alert-success {
     background-color: #D4EDDA;
@@ -427,7 +434,7 @@ hr {
 }
 
 .service-cta:hover {
-    background-color: #02376f;
+    background-color: #990000;
 }
 
 /* CTA Final na página de serviços */
@@ -638,7 +645,8 @@ footer {
     
     /* Encolhe o logo */
     .navbar .chaveiro-logo {
-        max-width: 120px; 
+        /* Aumentado 10% para views menores (132px -> 145px) */
+        max-width: 145px; 
         order: 1; /* Garante que o logo fique no início */
     }
     
